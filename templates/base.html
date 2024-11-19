@@ -11,6 +11,8 @@
         <a href="{{ url_for('dashboard') }}">Dashboard</a>
         <a href="{{ url_for('employee_list') }}">Employees</a>
         <a href="{{ url_for('add_employee') }}">Add Employee</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+        <a href="{{ url_for('launch') }}">Login/Register</a>
     </nav>
     <div class="container">
         {% block content %}{% endblock %}

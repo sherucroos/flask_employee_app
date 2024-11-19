@@ -28,21 +28,73 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
+@app.route('/', methods=['GET', 'POST'])
+def launch():
+    # Show the login/register page
+    if request.method == 'POST':
+        if 'login' in request.form:
+            # Login Form Submission
+            return redirect(url_for('login'))
+        elif 'register' in request.form:
+            # Register Form Submission
+            return redirect(url_for('register'))
+
+    return render_template('launch.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        role = request.form['role']  # Role selected by the user
+        
         user = User.query.filter_by(username=username).first()
 
         if user and check_password_hash(user.password, password):
-            login_user(user)
-            flash('Logged in successfully!')
-            return redirect(url_for('dashboard'))
+            if user.user_type == role:
+                # Role matches
+                login_user(user)
+                flash('Logged in successfully!')
+                return redirect(url_for('dashboard'))
+            else:
+                # Role does not match
+                flash('Invalid role for the selected username.')
         else:
             flash('Invalid username or password!')
 
-    return render_template('login.html')
+    return redirect(url_for('launch'))  # If login fails, redirect to launch page
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        role = request.form['role']
+
+        if not username or not password or not role:
+            flash('All fields are required!')
+            return redirect(url_for('register'))
+
+        # Hash password
+        hashed_password = generate_password_hash(password, method='sha256')
+
+        # Check if the user already exists
+        existing_user = User.query.filter_by(username=username).first()
+        if existing_user:
+            flash('Username already exists!')
+            return redirect(url_for('register'))
+
+        new_user = User(username=username, password=hashed_password, user_type=role)
+        db.session.add(new_user)
+        db.session.commit()
+
+        flash('User registered successfully!')
+        return redirect(url_for('login'))
+
+    return redirect(url_for('launch'))  # If registration fails, redirect to launch page
+
+
 
 @app.route('/logout')
 @login_required
@@ -102,9 +154,7 @@ def delete_employee(id):
     return redirect(url_for('employee_list'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
-
-# After importing all models
-with app.app_context():
-    db.create_all()  # This creates the necessary tables based on the models
+    # Ensure tables are created within the app context
+    with app.app_context():
+        db.create_all()  # This creates the necessary tables based on the models
+    app.run(debug=True)  # Start the Flask application

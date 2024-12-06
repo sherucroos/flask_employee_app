@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Dashboard</h1>
-<p>Total Employees: {{ total_employees }}</p>
+<div class="text-center">
+    <h1 class="mb-4">Dashboard</h1>
+    <div class="alert alert-primary" role="alert">
+        Total Employees: {{ total_employees }}
+    </div>
+</div>
 {% endblock %}

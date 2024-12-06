@@ -1,10 +1,47 @@
 {% extends 'base.html' %}
-{% block content %}
-<h1>Add Employee</h1>
-<form method="POST" action="{{ url_for('add_employee') }}">
-    <input type="text" name="name" placeholder="Employee Name" required>
-    <input type="text" name="role" placeholder="Role" required>
-    <button type="submit">Add Employee</button>
-</form>
 
+{% block content %}
+<div class="add-employee-dashboard">
+    <div class="header">
+        <h2>Add New Employee</h2>
+        <p>Fill in the details below to add a new employee to the system.</p>
+    </div>
+
+    <!-- Add Employee Form -->
+    <div class="add-employee-form-container">
+        <form class="add-employee-form" method="POST" action="{{ url_for('add_employee') }}">
+            <div class="form-group">
+                <label for="name">Employee Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter Employee Name" required>
+            </div>
+            <div class="form-group">
+                <label for="role">Designation:</label>
+                <input type="text" id="role" name="role" placeholder="Enter Role (e.g., Software Engineer)" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter Employee Email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" name="phone" placeholder="Enter Employee Phone" required>
+            </div>
+            <div class="form-group">
+                <label for="department">Department:</label>
+                <select id="department" name="department" required>
+                    <option value="" disabled selected>Select Department</option>
+                    <option value="IT">IT</option>
+                    <option value="HR">HR</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Marketing">Marketing</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="join_date">Join Date:</label>
+                <input type="text" id="join_date" name="join_date" placeholder="Enter Join Date (e.g., 01-01-2023)" required>
+            </div>
+            <button type="submit" class="submit-btn">Add Employee</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

@@ -1,5 +1,14 @@
-<form method="POST" action="{{ url_for('login') }}">
-    <input type="text" name="username" placeholder="Username" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <button type="submit">Login</button>
+<form method="POST" action="{{ url_for('login') }}" class="mt-4">
+    <div class="card shadow-sm mx-auto" style="max-width: 400px;">
+        <div class="card-header bg-primary text-white text-center">Login</div>
+        <div class="card-body">
+            <div class="mb-3">
+                <input type="text" class="form-control" name="username" placeholder="Username" required>
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+        </div>
+    </div>
 </form>

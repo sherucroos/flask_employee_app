@@ -1,20 +1,64 @@
 {% extends 'base.html' %}
-{% block content %}
-<h1>Employee List</h1>
- 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Role</th>
-        <th>Added By</th>
-    </tr>
-    {% for employee in employees %}
-    <tr>
-        <td>{{ employee.name }}</td>
-        <td>{{ employee.role }}</td>
-        <td>{{ employee.created_by }}</td>
-    </tr>
-    {% endfor %}
-</table>
 
+{% block content %}
+<div class="employee-details-container">
+    <h1>Employee Details</h1>
+
+    <!-- Search Employee Input -->
+    <div class="employee-search">
+        <input type="text" placeholder="Search employee" class="search-input" />
+    </div>
+
+    <!-- Employee Cards Section (Dynamic Content) -->
+    <div class="employee-cards">
+        {% for employee in employees %}
+            <div class="employee-card">
+                <img src="https://via.placeholder.com/50" alt="Profile" class="profile-img">
+                <div class="employee-info">
+                    <h3>{{ employee.name }}</h3>
+                    <p>{{ employee.designation }}</p>
+                    <p>Email: {{ employee.email }}</p>
+                    <p>Phone: {{ employee.phone }}</p>
+                    <p>Department: {{ employee.department }}</p>
+                    <p>Join Date: {{ employee.join_date }}</p>
+                    <a href="#">Profile Details</a>
+                </div>
+            </div>
+        {% else %}
+            <p>No employees found.</p>
+        {% endfor %}
+    </div>
+
+    <!-- Employee Table Section (Dynamic Content) -->
+    <table class="employee-table">
+        <thead>
+            <tr>
+                <th>Employee</th>
+                <th>Designation</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Department</th>
+                <th>Join Date</th>
+                <th>Profile Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+                <tr>
+                    <td>{{ employee.name }}</td>
+                    <td>{{ employee.designation }}</td>
+                    <td>{{ employee.email }}</td>
+                    <td>{{ employee.phone }}</td>
+                    <td>{{ employee.department }}</td>
+                    <td>{{ employee.join_date }}</td>
+                    <td><a href="#">View</a></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">No employees found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

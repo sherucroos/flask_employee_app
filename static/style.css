@@ -1,34 +1,237 @@
+/* General Styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
 }
 
-nav {
-    background: #333;
-    padding: 1em;
+/* Container for the Employee Details Page */
+.employee-details-container {
+    background-color: #ffffff; /* Soft white background for the container */
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #f9fafb; /* Very light background to create contrast */
+    margin-top: 3rem;
 }
 
-nav a {
-    color: white;
-    margin-right: 1em;
+/* Heading Style */
+.employee-details-container h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 2.5rem;
+    font-weight: 600;
+}
+
+/* Search Input Styling */
+.employee-search {
+    margin-bottom: 2.5rem;
+}
+
+.search-input {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    width: 80%;
+    max-width: 450px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: #4a90e2;
+    outline: none;
+}
+
+/* Employee Cards Section */
+.employee-cards {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.employee-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 250px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.employee-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.profile-img {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.employee-info h3 {
+    font-size: 1.3rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.employee-info p {
+    color: #777;
+    font-size: 0.95rem;
+}
+
+.employee-info a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.employee-info a:hover {
+    text-decoration: underline;
+}
+
+/* Table Styling for Employee Details */
+.employee-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 3rem;
+}
+
+.employee-table th, .employee-table td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 1.1rem;
+}
+
+.employee-table th {
+    background-color: #f4f4f4;
+    font-weight: 600;
+}
+
+.employee-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.employee-table a {
+    color: #007bff;
     text-decoration: none;
 }
 
-.container {
-    margin: 2em auto;
-    max-width: 800px;
+.employee-table a:hover {
+    text-decoration: underline;
 }
 
-table {
+/* Add Employee Page Styling */
+.add-employee-container {
+    background-color: #ffffff;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    max-width: 400px;
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
-th, td {
+.add-employee-container h1 {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    font-size: 1.2rem;
+    color: #444;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
     border: 1px solid #ddd;
-    padding: 0.5em;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
 }
 
-th {
-    background: #f4f4f4;
+.form-group input:focus, .form-group select:focus {
+    border-color: #4a90e2;
+    outline: none;
+}
+
+.form-group input::placeholder, .form-group select::placeholder {
+    color: #aaa;
+}
+
+/* Submit Button */
+.submit-btn {
+    background-color: #4a90e2;
+    color: white;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    background-color: #357ab7;
+}
+
+.submit-btn:active {
+    background-color: #2d658f;
+}
+
+/* Cancel Button */
+.cancel-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.cancel-btn:hover {
+    background-color: #c0392b;
+}
+
+.cancel-btn:active {
+    background-color: #9b2a22;
+}
+
+/* Action Buttons Wrapper */
+.action-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: space-between;
 }
